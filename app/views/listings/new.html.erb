@@ -1,0 +1,63 @@
+<%= render 'partial/navbar' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-dafault">
+        <div class="panel panel-heading">
+          <div class="text-center">
+            <span style="font-size:24px;">Register satellite data</span>
+          </div>
+        </div>
+
+        <div class="panel panel-body">
+          <%= form_for @listing do |f| %>
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>Satellite type</label>
+                  <%= f.select :satellite_type, [["ALOS/AVNIR-2", "ALOS/AVNIR-2"], ["ALOS/PALSAR", "ALOS/PALSAR"], ["ALOS/PRISM", "ALOS/PRISM"], ["ALOS-2/PALSAR-2", "ALOS-2/PALSAR-2"], ["Sentinel-1", "Sentinel-1"], ["Sentinel-2", "Sentinel-2"]], {prompt:"選択してください"}, {required: "true", autofocus: "true", class: "form-control"} %>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>Date type</label>
+                  <%= f.select :data_type, [["Level 1.0", "Level 1.0"], ["Level 1.1", "Level 1.1"], ["Level 1.5", "Level 1.5"], ["Others", "Others"]], {prompt:"選択してください"}, {required: "true", autofocus: "true", class: "form-control"} %>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>Acquisition year</label>
+                  <%= f.select :acquisition_years, [["2013", 2013], ["2014", 2014], ["2015", 2015], ["2016", 2016], ["2017", 2017]], {prompt:"選択してください"}, {required: "true", autofocus: "true", class: "form-control"} %>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>Date size</label>
+                  <%= f.select :data_size,[["* < 1G", "* < 1G"], ["1G < * < 10G", "1G < * < 10G"], ["10G < *", "10G < *"]], {prompt:"選択してください"}, {required: "true", autofocus: "true", class: "form-control"} %>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            <div class="actions">
+              <%= f.submit "Save", class:"btn btn-danger" %>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

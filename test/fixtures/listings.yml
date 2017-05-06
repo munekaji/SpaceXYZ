@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  satellite_type: MyString
+  data_type: MyString
+  data_size: MyString
+  acquisition_years: 1
+  address: MyString
+  listing_title: MyString
+  listing_content: MyText
+  price_pernight: 1
+  active: false
+  user_id: 
+
+two:
+  satellite_type: MyString
+  data_type: MyString
+  data_size: MyString
+  acquisition_years: 1
+  address: MyString
+  listing_title: MyString
+  listing_content: MyText
+  price_pernight: 1
+  active: false
+  user_id: 

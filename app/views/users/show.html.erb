@@ -1,0 +1,49 @@
+<%= render 'partial/navbar' %>
+
+<script type="text/javascript">
+  $(function(){
+    <% if !@user.email.blank? %>
+      $("#ver-email").attr('class', 'verification-checked');
+    <% end %>
+
+    <% if !@user.phone_number.blank? %>
+      $("#ver-tel").attr('class', 'verification-checked');
+    <% end %>
+
+    <% if @user.provider == "facebook" %>
+      $("#ver-facebook").attr('class', 'verification-checked');
+    <% end %>
+  });
+</script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-4">
+      <div class="user-profile row-sapce-4 text-center">
+        <%= image_tag @user.image, class: "profile-full img-circle" %>
+      </div>
+
+      <div class="panel panel-default verifications hidden-xs hidden-sm">
+        <div class="panel-heading">
+          My ID          
+        </div>
+        <div class="panel-body">
+          <div id="ver-email">
+            email
+          </div>
+          <div id="ver-tel">
+            tel
+          </div>
+          <div id="ver-facebook">
+            facebook
+          </div>  
+        </div> 
+      </div>
+    </div>
+    <div class="col-lg-9 col-md-8 col-sm-12">
+      <h1>Hello, I am <%= @user.name %></h1>
+      <p>self introduction</p>
+      <%= @user.description %>
+    </div>
+  </div>
+</div>
