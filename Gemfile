@@ -31,6 +31,15 @@ gem "paperclip", "~> 5.0.0"
 gem 'dropzonejs-rails'
 gem "figaro", "~> 1.1.0"
 
+group :production do
+	gem 'pg'
+	gem 'rails_12factor'
+end
+
+group :development do
+	gem 'sqlite3'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
