@@ -26,6 +26,10 @@
             </div>
 
             <div class="form-group">
+              <%= f.file_field :image, :class => 'form-control' %>
+            </div>
+
+            <div class="form-group">
               <%= f.text_area :description, rows: 5, cols: 25,  :placeholder => "self comment", :class => 'form-control' %>
             </div>
 

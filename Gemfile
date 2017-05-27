@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -31,6 +31,10 @@ gem "paperclip", "~> 5.0.0"
 gem 'dropzonejs-rails'
 gem "figaro", "~> 1.1.0"
 gem 'aws-sdk', '~> 2.3'
+gem 'geocoder'
+gem 'jquery-ui-rails'
+gem 'stripe'
+gem 'rest-client'
 
 group :production do
 	gem 'pg'

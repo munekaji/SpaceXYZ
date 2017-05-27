@@ -2,7 +2,7 @@
 <div class="container">
     <div class="col-md-3">
         <!-- vertical-navbar -->
-        <%= render 'partial/verticalnavbar'%>
+        <%= render 'partial/verticalnavbar' %>
     </div>
     <div class="col-md-9">
         <div class="panel panel-default">
@@ -75,15 +75,15 @@ $(function () {
             $.ajax({
                 type: "GET",
                 url: "/photos/list",
-                data: {'listing_id' : <%= @listing.id %>},
-                datatype: 'json',
+                data: {'listing_id': <%= @listing.id %>},
+                dataType: 'json',
                 success: function(data) {
                     $.each(data.images, function(key, value) {
-                        if (data.images, != undefined && data.images.length > 0) {
+                        if (data.images != undefined && data.images.length > 0) {
                             me.emit("addedfile", value);//addfileイベントをvalueのデータで実行
                             me.emit("thumnail", value, value.src);//thumnailイベントをvalueのでデータで実行
                             me.emit("complete", value);//completeイベントをvalueのデータで実行, 
-                            $(value._removeLink).attr("id", value.id)//valueの_removeLinkのidにvalue.idを追加
+                            $(value._removeLink).attr("id", value.id);//valueの_removeLinkのidにvalue.idを追加
                         }
                     });
 
