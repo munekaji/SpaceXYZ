@@ -166,9 +166,12 @@
 
 
     <!-- レビュー -->
-    <div class="row">
-        <div class="col-md-9>
-            <h3 class="row-space-3">Review</h3>
+    <div class="row raw-space-4">
+        <div class="col-md-9">
+            <h3 class="row-space-3">Review(<%= @reviews.count %>)</h3>
+            <div id="average_star_rate"></div>
+            <%= render 'reviews/form' if @currentUserBooking && !@currentUserReview %>
+            <%= render 'reviews/list' %>
         </div>
 
         <div class="col-md-3">
@@ -385,5 +388,13 @@ async defer></script>
         });
       }
     });
+  });
+</script>
+
+<script>
+  $('#average_star_rate').raty({
+    path: '/assets',
+    readOnly: true,
+    score: <%= @listing.average_star_rate %>
   });
 </script>

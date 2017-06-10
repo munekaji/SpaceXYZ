@@ -24,9 +24,11 @@
 	                        </div>
 
 	                        <div class="col-md-3 col-sm-3 col-middle row-space-1">
-	                            <div class="panel-list-img text-center">
-	                                <%= link_to "Remained 5 Steps", manage_listing_basics_path(listing), class: "btn btn-primary pull-right" %>
-	                            </div>
+	                            <% if listing.not_checked > 0 %>
+	                                <%= link_to "Remained #{listing.not_checked}steps", manage_listing_basics_path(listing), class: "btn btn-primary pull-right" %>
+	                            <% else %>
+                                    <%= link_to "Edit", manage_listing_basics_path(listing), class: "btn btn-success pull-right" %>
+                                <% end %>
 	                        </div>
 	                    </div>
 	                </li>
