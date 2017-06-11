@@ -35,8 +35,11 @@ gem 'geocoder'
 gem 'jquery-ui-rails'
 gem 'stripe'
 gem 'rest-client'
+
 gem 'thin'
 gem 'private_pub'
+
+gem 'ransack'
 
 group :production do
 	gem 'pg'

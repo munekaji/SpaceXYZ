@@ -1,0 +1,114 @@
+<!-- Search Form -->
+<%= search_form_for @search, url: search_path do |f| %>
+ 
+  <div class="filter">
+
+    <!-- カレンダー -->
+    <div class="row filter-section">
+      <div class="col-md-1 text-center col-md-offset-1">
+        <h4>Date</h4>
+      </div>
+      <div class="col-md-4 col-xs-6 col-md-offset-1">
+        <%= text_field_tag :start_date, params[:start_date], placeholder: "Start Date", class: "form-control", value: session[:start_date] %>
+      </div>
+      <div class="col-md-4 col-xs-6">
+        <%= text_field_tag :end_date, params[:end_date], placeholder: "End Date", class: "form-control", value: session[:end_date] %>
+      </div>
+    </div>
+
+    <hr>
+    <!-- 価格 -->
+    <div class="row filter-section">
+      <div class="col-md-1 text-center col-md-offset-1">
+        <h4>Price</h4>
+      </div>
+
+      <div class="col-md-4 col-xs-6 col-md-offset-1">
+        <%= f.text_field :price_pernight_gteq, placeholder: "Min", value:session[:price_pernight_gteq], class:"form-control" %>
+      </div>
+      <div class="col-md-4 col-xs-6">
+        <%= f.text_field :price_pernight_lteq, placeholder: "Max", value:session[:price_pernight_lteq], class:"form-control" %>
+      </div>
+    </div>
+    
+    <div class="row filter-section row-space-top-4 row-space-4">
+
+      <div class="col-md-3 text-center">
+        <h4>Satellite</h4>
+      </div>
+      
+      <div class="col-md-3 col-xs-4">
+        <%= check_box_tag "q[satellite_type_eq_any][]", "ALOS/AVNIR-2", session[:AVNIR2] %> ALOS/AVNIR-2
+      </div>
+      <div class="col-md-3 col-xs-4">
+        <%= check_box_tag "q[satellite_type_eq_any][]", "ALOS/PALSAR", session[:PALSAR] %> ALOS/PALSAR
+      </div>
+      <div class="col-md-3 col-xs-4">
+        <%= check_box_tag "q[satellite_type_eq_any][]", "ALOS/PRISM", session[:PRISM] %> ALOS/PRISM
+      </div>
+      <div class="col-md-3 col-xs-4">
+        <%= check_box_tag "q[satellite_type_eq_any][]", "ALOS-2/PALSAR-2", session[:PALSAR2] %> ALOS-2/PALSAR-2
+      </div>
+      <div class="col-md-3 col-xs-4">
+        <%= check_box_tag "q[satellite_type_eq_any][]", "Sentinel-1", session[:Sentinel1] %> Sentinel-1
+      </div>
+      <div class="col-md-3 col-xs-4">
+        <%= check_box_tag "q[satellite_type_eq_any][]", "Sentinel-2", session[:Sentinel2] %> Sentinel-2
+      </div>
+    </div>
+    
+    <div class="row filter-section">
+      <div class="col-md-3 col-xs-6 text-center">
+        <h4>Data type</h4>
+      </div>
+      <div class="col-md-3 col-xs-6">
+        <div class="form-group">
+          <%= f.select :data_type_eq, [["Level 1.0", "Level 1.0"], ["Level 1.1", "Level 1.1"], ["Level 1.5", "Level 1.5"], ["Others", "Others"]], { :include_blank => "Select",:selected => session[:data_type_eq]}, {class: "form-control"} %>
+        </div>
+      </div>
+
+      <div class="col-md-2 col-xs-6 text-center">
+        <h4>Aqcuisition year</h4>
+      </div>
+      <div class="col-md-3 col-xs-6">
+        <div class="form-group">
+          <%= f.select :acquisition_year_gteq, [["2013", 2013], ["2014", 2014], ["2015", 2015], ["2016", 2016], ["2017", 2017]], {:include_blank => "Select",:selected => session[:acquisition_year_gteq]}, {class: 'form-control'} %>
+        </div>
+      </div>
+  
+    </div>
+    
+    <!-- Submitボタン -->
+    <div class="row filter-section">
+      <div class="col-md-3">
+        <%= f.submit "Re-search", class: "btn btn-danger" %>
+      </div>
+    </div>    
+  </div>
+<% end %>
+
+
+
+<!-- datepickerのスクリプト -->
+<script>
+  $(function() {
+    $("#start_date").datepicker({
+      dateFormat: 'dd-mm-yy',
+      minDate: 0,
+      maxDate: '3m',
+      onSelect: function(selected) {
+        $('#end_date').datepicker("option", "minDate", selected);
+        $('#end_date').attr('disabled', false);
+      }
+    });
+
+    $("#end_date").datepicker({
+      dateFormat: 'dd-mm-yy',
+      minDate: 0,
+      maxDate: '3m',
+      onSelect: function(selected) {
+        $('#start_date').datepicker("option", "maxDate", selected);
+      }
+    });
+  })
+</script>
